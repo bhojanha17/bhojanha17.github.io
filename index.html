@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harshad Bhojan</title>
+<meta name="description" content="Harshad Bhojan, software engineer working on backend services and distributed systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f3ee;
+  --ink: #18202b;
+  --muted: #56606d;
+  --rule: #d3d6cc;
+  --accent: #0e6b6b;
+  --leader: #a86f00;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171c23;
+    --ink: #e7e9e3;
+    --muted: #a0a8b3;
+    --rule: #2f3742;
+    --accent: #5cbcb6;
+    --leader: #e3ac45;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+}
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: end;
+  padding: 5.5rem 0 4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.hero h1 {
+  font: 800 clamp(3rem, 8vw, 5.75rem)/0.92 var(--display);
+  letter-spacing: -0.035em;
+  margin: 0 0 1.5rem;
+}
+.hero .role {
+  font: 500 1.3rem/1.35 var(--display);
+  margin: 0 0 1rem;
+}
+.hero .intro { color: var(--muted); max-width: 34em; margin: 0 0 1.75rem; }
+.links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font-weight: 700; }
+
+/* At-a-glance facts */
+.facts { margin: 0; border-top: 2px solid var(--ink); }
+.facts div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 700; }
+
+/* ---------- Sections ---------- */
+/* ---------- Sticky nav ---------- */
+.site-nav {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.site-nav .wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  height: 3.5rem;
+}
+.site-nav .home {
+  font: 700 1.05rem/1 var(--display);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav ul {
+  display: flex; gap: 0.25rem;
+  margin: 0; padding: 0; list-style: none;
+  overflow-x: auto; scrollbar-width: none;
+}
+.site-nav ul::-webkit-scrollbar { display: none; }
+.site-nav ul a {
+  display: block;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+.site-nav ul a:hover { color: var(--ink); background: var(--rule); }
+.site-nav ul a[aria-current="true"] { color: var(--paper); background: var(--accent); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id] { scroll-margin-top: 3.5rem; }
+
+section { padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: 0; }
+.sec {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 2rem;
+}
+h2 {
+  font: 700 1.75rem/1.1 var(--display);
+  letter-spacing: -0.015em;
+  margin: 0;
+  position: sticky; top: 5.5rem;
+  align-self: start;
+}
+h3 { font: 700 1.3rem/1.25 var(--display); margin: 0; }
+ul.bullets { margin: 0.75rem 0 0; padding-left: 1.1rem; max-width: 44em; }
+ul.bullets li { margin-bottom: 0.45rem; }
+ul.bullets li::marker { color: var(--muted); }
+
+/* Experience timeline */
+.jobs { list-style: none; margin: 0; padding: 0; }
+.job {
+  position: relative;
+  padding: 0 0 2.75rem 2rem;
+  border-left: 2px solid var(--rule);
+}
+.job:last-child { padding-bottom: 0; border-left-color: transparent; }
+.job::before {
+  content: "";
+  position: absolute; left: -7px; top: 0.4rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+}
+.job.current::before { background: var(--accent); }
+.job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; align-items: baseline; }
+.when { color: var(--muted); font-size: 0.95rem; white-space: nowrap; }
+.title { margin: 0.15rem 0 0; color: var(--muted); }
+.title em { color: var(--ink); font-style: normal; font-weight: 700; }
+h4.team {
+  font: 700 1.05rem/1.3 var(--display);
+  color: var(--accent);
+  margin: 1.5rem 0 0;
+}
+h4.team + ul.bullets { margin-top: 0.5rem; }
+
+/* Live projects */
+.live {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+.shot { display: block; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); }
+.shot img { display: block; width: 100%; height: auto; }
+.live-body h3 { font-size: 1.6rem; }
+.live-body p { margin: 0.75rem 0 0; max-width: 36em; }
+.live-body .stack { margin-top: 0.75rem; }
+.visit { font-weight: 700; font-size: 1.1rem; }
+.live-tag {
+  font: 700 0.75rem/1 var(--body);
+  color: var(--paper);
+  background: var(--accent);
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
+  text-decoration: none;
+  vertical-align: 0.2em;
+  margin-left: 0.35rem;
+}
+
+/* Projects */
+.areas { display: grid; gap: 3rem; }
+.area h3.area-name {
+  font: 500 1rem/1.3 var(--body);
+  color: var(--muted);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+}
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 2.5rem; }
+.project h4 { font: 700 1.15rem/1.3 var(--display); margin: 0; }
+.stack { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--accent); }
+.project ul.bullets { font-size: 0.97rem; }
+
+/* Skills / education */
+dl.skills { margin: 0; display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 0.9rem 1.5rem; max-width: 52rem; }
+dl.skills dt { font-weight: 700; }
+dl.skills dd { margin: 0; color: var(--muted); }
+.school + .school { margin-top: 2rem; }
+.school p { margin: 0.2rem 0 0; color: var(--muted); }
+
+footer { padding: 3rem 0 4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; }
+footer .links { margin-top: 0.5rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-top: 3.5rem; gap: 2.5rem; }
+  .sec { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  h2 { position: static; }
+  .projects { grid-template-columns: minmax(0, 1fr); }
+  .live { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 1rem; }
+  .facts div { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.75rem; }
+  .site-nav .home { display: none; }
+  .site-nav ul a { padding: 0.4rem 0.55rem; font-size: 0.9rem; }
+  dl.skills { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+  dl.skills dd { margin-bottom: 0.8rem; }
+  .job { padding-left: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="home" href="#">Harshad Bhojan</a>
+    <ul>
+      <li><a href="#live">Live projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1>Harshad<br>Bhojan</h1>
+      <p class="role">Software engineer at Capital One, passionate about backend services and distributed systems.</p>
+      <p class="intro">Most recently I helped deliver Capital One's first company-owned scan gate for third-party container images, a multi-region serverless pipeline on AWS that checks and certifies about 4,000 images a day. Outside work I study computing systems at Georgia Tech, and I've built consensus, replication, and MapReduce systems in Go and C++.</p>
+      <ul class="links">
+        <li><a href="mailto:bhojanha@umich.edu">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/harshad-bhojan">LinkedIn</a></li>
+        <li><a href="https://github.com/bhojanha17">GitHub</a></li>
+      </ul>
+    </div>
+
+    <dl class="facts">
+      <div><dt>Working at</dt><dd>Capital One, Associate Software Engineer</dd></div>
+      <div><dt>Studying</dt><dd>M.S. Computer Science, Georgia Tech</dd></div>
+      <div><dt>Based in</dt><dd>New York, NY</dd></div>
+      <div><dt>Focus</dt><dd>Backend services, distributed systems, applied AI</dd></div>
+    </dl>
+  </header>
+
+  <section id="live" class="sec">
+    <h2>Live projects</h2>
+    <div class="live-list">
+      <article class="live">
+        <a class="shot" href="https://cinephilesclub.com" tabindex="-1" aria-hidden="true">
+          <img src="assets/cinephiles.jpg" width="962" height="828" loading="lazy"
+               alt="">
+        </a>
+        <div class="live-body">
+          <h3>Cinephiles</h3>
+          <p>A movie club app for friend groups. Members nominate films, rank them to pick the club's next watch, and review what they've seen. An AI assistant built on Claude recommends movies based on the club's history and checks every pick against real TMDB data.</p>
+          <p class="stack">Python, FastAPI, PostgreSQL, React, TypeScript, Claude API</p>
+          <p class="visit"><a href="https://cinephilesclub.com">Visit cinephilesclub.com</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" class="sec">
+    <h2>Experience</h2>
+    <ol class="jobs" reversed>
+      <li class="job current">
+        <div class="job-head"><h3>Capital One</h3><span class="when">Aug 2025 to present</span></div>
+        <p class="title"><em>Associate Software Engineer</em>, New York, NY</p>
+        <h4 class="team">Artifactory Curation</h4>
+        <ul class="bullets">
+          <li>Delivered Capital One's first company-owned Qualys scan gate for third-party container images: a six-stage, multi-region serverless pipeline (AWS Lambda, SQS, DynamoDB Global Tables, CDK) that certifies 100% of ~4,000 images a day and cut P95 availability time from 27.5 hours to 11 minutes (~99%).</li>
+          <li>Led the production infrastructure buildout across two AWS regions, provisioning cross-account SQS queues and KMS keys, setting up gradual deployments with automatic rollback, and resolving the CloudFormation and OnePipeline failures that blocked the first prod release.</li>
+          <li>Instrumented end-to-end observability by standardizing logs from all six stages into Splunk for single-ID tracing, then drove the move to Observe with an OPAL dashboard of pipeline metrics.</li>
+        </ul>
+        <h4 class="team">Smart Doc Upload</h4>
+        <ul class="bullets">
+          <li>Built features for Smart Doc Upload, a set of Java Spring Boot REST APIs with MongoDB storage that ingests 1,000,000+ sensitive customer documents a day and publishes events to Kafka, Snowflake, and OneLake for downstream teams.</li>
+          <li>Co-led architecture for the Insights Processing Engine, an AI service that extracts real-time insights from customer documents. Wrote its workflow ADRs, API contracts, and schemas.</li>
+          <li>Onboarded 30+ use cases across 5+ client teams, testing end to end in QA and production. Built a Claude Code skill that automates onboarding, cutting turnaround from 20 minutes to 20 seconds.</li>
+          <li>Shipped production builds through CI/CD to AWS ECS containers, monitored health in New Relic and Splunk, and remediated security vulnerabilities.</li>
+        </ul>
+        <h4 class="team">Across the company</h4>
+        <ul class="bullets">
+          <li>Demoed Claude Code in the development workflow to the whole organization, helping engineering teams adopt AI-assisted development.</li>
+          <li>Mentor middle school students in the Coders program as they build and ship apps with MIT App Inventor.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head"><h3>Nokia</h3><span class="when">Jun to Aug 2024</span></div>
+        <p class="title"><em>AI Solutions Engineer Intern</em>, Naperville, IL</p>
+        <ul class="bullets">
+          <li>Trained a neural network that classifies 1,000,000+ security vulnerabilities across Nokia's products with 92% accuracy, so analysts verify results instead of classifying by hand.</li>
+          <li>Encoded CVEs, component versions, and text descriptions as vectors, normalizing security data from sources across the company.</li>
+          <li>Shipped an LLM summarization pipeline (Zephyr-7B on Azure ML Studio) to production, cutting report writing from about 10 minutes to about 1 minute of review.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head"><h3>The Kroger Co.</h3><span class="when">May 2023 to May 2024</span></div>
+        <p class="title"><em>Front-End Developer Intern</em>, Cincinnati, OH (remote)</p>
+        <ul class="bullets">
+          <li>Revamped the Point of Sale Host web app, which manages pricing for 2,000+ stores and Kroger Digital, delivering features in Angular and Java with SQL on Azure.</li>
+          <li>Added 1,000+ lines and 50+ functions of JUnit test coverage in an Agile scrum team.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head"><h3>University of Michigan</h3><span class="when">Apr 2022 to May 2023</span></div>
+        <p class="title"><em>Computer Consultant</em>, East Hall Tech Services, Ann Arbor, MI</p>
+        <ul class="bullets">
+          <li>Supported faculty with hardware and software issues on macOS, Linux, and Windows, and fixed network problems with switches and IP assignments.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="projects" class="sec">
+    <h2>Projects</h2>
+    <div class="areas">
+
+      <div class="area">
+        <h3 class="area-name">Distributed systems</h3>
+        <div class="projects">
+          <article class="project">
+            <h4>Sharded Paxos key/value store</h4>
+            <p class="stack">Go, RPC</p>
+            <ul class="bullets">
+              <li>Linearizable, sharded key/value store serving concurrent put, append, and get.</li>
+              <li>Paxos across server groups keeps replicas consistent.</li>
+              <li>Shards migrate between groups under a replicated master, staying correct through partitions and node failures.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>Primary/backup key/value store</h4>
+            <p class="stack">Go, RPC</p>
+            <ul class="bullets">
+              <li>Linearizable store with primary/backup replication that survives one failure.</li>
+              <li>A view service detects failures and coordinates failover.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>MapReduce</h4>
+            <p class="stack">Go, RPC</p>
+            <ul class="bullets">
+              <li>Manager and worker servers partition, shuffle, and reduce datasets across a cluster using goroutines and channels.</li>
+              <li>Failed workers' tasks are reassigned automatically, so jobs still finish.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="area">
+        <h3 class="area-name">Operating systems</h3>
+        <div class="projects">
+          <article class="project">
+            <h4>Network file system</h4>
+            <p class="stack">C++, TCP sockets</p>
+            <ul class="bullets">
+              <li>Multi-threaded server handling concurrent client reads, writes, creates, and deletes over TCP.</li>
+              <li>Hand-over-hand locking on directory traversal allows safe, fine-grained parallel access.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>Virtual memory pager</h4>
+            <p class="stack">C++</p>
+            <ul class="bullets">
+              <li>Page allocation, eviction, disk swapping, and copy-on-write sharing between processes.</li>
+              <li>Page-fault handler that classifies and recovers from not-present and protection faults.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>Thread library</h4>
+            <p class="stack">C++, ucontext</p>
+            <ul class="bullets">
+              <li>User-level threads, mutexes, and condition variables, context-switching through <code>ucontext.h</code>.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="area">
+        <h3 class="area-name">Full-stack and machine learning</h3>
+        <div class="projects">
+          <article class="project">
+            <h4><a href="https://cinephilesclub.com">Cinephiles</a> <a class="live-tag" href="#live">Live</a></h4>
+            <p class="stack">Python, FastAPI, PostgreSQL, React, TypeScript, Claude API</p>
+            <ul class="bullets">
+              <li>Movie club platform where groups nominate, vote on, and review films in phases the club admin controls. FastAPI and PostgreSQL backend, React and TypeScript frontend, live on Heroku and Vercel.</li>
+              <li>AI recommendations run a bounded tool-use loop: Claude requests up to 5 TMDB lookups in parallel, then answers in a second call, with progress streamed to the browser over server-sent events.</li>
+              <li>Every pick is checked against TMDB. Structured JSON output, tool-verified movie IDs, and filtering of duplicates and already-watched films keep hallucinated titles out.</li>
+              <li>Prompt caching, per-request token accounting, and a per-user daily quota keep AI costs in check.</li>
+              <li>JWT access tokens with single-use, rotating refresh tokens stored as hashes, plus server-side admin and member permissions.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>Revvy</h4>
+            <p class="stack">Python, Flask, React, GPT-4, AWS EC2</p>
+            <ul class="bullets">
+              <li>Movie review platform with 10,000 movies and 200,000+ reviews, backed by a Flask REST API and a React UI.</li>
+              <li>Sentiment classifier and weighted scoring give each user ratings matched to their preferences.</li>
+              <li>A MapReduce pipeline and cosine-similarity index power keyword search.</li>
+            </ul>
+          </article>
+          <article class="project">
+            <h4>Deep learning and SVMs</h4>
+            <p class="stack">Python, PyTorch, scikit-learn</p>
+            <ul class="bullets">
+              <li>CNN image classifier using transfer learning and data augmentation.</li>
+              <li>SVMs compared on an Amazon Prime Video dataset, with bias measured using word-embedding association tests.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="area">
+        <h3 class="area-name">Embedded systems</h3>
+        <div class="projects">
+          <article class="project">
+            <h4>Ball Bot</h4>
+            <p class="stack">C, STM32, Pixy2, I2C, UART, XBee</p>
+            <ul class="bullets">
+              <li>Ball-tracking turret driven by Pixy2 computer vision and stepper motors.</li>
+              <li>Wireless gesture-control glove with under 50 ms latency.</li>
+              <li>DAC audio output with op-amp conditioning for voice cues.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills" class="sec">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>C, C++, Go, Python, Java, JavaScript, TypeScript, SQL, HTML/CSS, Shell</dd>
+      <dt>Frameworks</dt><dd>Spring Boot, Flask, FastAPI, React, Angular, PyTorch, scikit-learn, TensorFlow, NumPy, Pandas, JUnit</dd>
+      <dt>Platforms and tools</dt><dd>AWS, Docker, Kafka, MongoDB, Snowflake, Splunk, New Relic, Azure ML Studio, Nginx, Linux, Git, Claude Code</dd>
+    </dl>
+  </section>
+
+  <section id="education" class="sec">
+    <h2>Education</h2>
+    <div>
+      <div class="school">
+        <h3>Georgia Institute of Technology</h3>
+        <p>M.S. Computer Science, Computing Systems specialization. Expected 2028.</p>
+      </div>
+      <div class="school">
+        <h3>University of Michigan</h3>
+        <p>B.S.E. Computer Science, Mathematics minor. May 2025. Magna Cum Laude, Dean's List.</p>
+        <p>Coursework in distributed systems, operating systems, data structures and algorithms, web systems, embedded systems, and machine learning.</p>
+      </div>
+      <div class="school">
+        <h3>Certification and awards</h3>
+        <p>AWS Certified Solutions Architect – Associate</p>
+        <p>Best Use of Embedded Systems, MHacks 17</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0">Want to talk? Email is the fastest way to reach me.</p>
+    <ul class="links">
+      <li><a href="mailto:bhojanha@umich.edu">bhojanha@umich.edu</a></li>
+      <li><a href="https://www.linkedin.com/in/harshad-bhojan">LinkedIn</a></li>
+      <li><a href="https://github.com/bhojanha17">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+// Highlight the nav link for the section currently in view.
+(function () {
+  var links = document.querySelectorAll('.site-nav ul a');
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var sections = document.querySelectorAll('main section[id]');
+  var last = null, ticking = false;
+
+  function update() {
+    ticking = false;
+    // The active section is the last one whose top has passed a line just below the nav
+    var line = 80 + window.innerHeight * 0.2;
+    var current = null;
+    sections.forEach(function (s) {
+      if (s.getBoundingClientRect().top <= line) current = s.id;
+    });
+    // At the very bottom, the last section may be too short to reach that line
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = sections[sections.length - 1].id;
+    }
+    if (current === last) return;
+    last = current;
+    links.forEach(function (a) { a.removeAttribute('aria-current'); });
+    if (current && byId[current]) {
+      var a = byId[current], ul = a.closest('ul');
+      a.setAttribute('aria-current', 'true');
+      // Keep the active link visible in the nav row on narrow screens
+      var left = a.offsetLeft - ul.offsetLeft, right = left + a.offsetWidth;
+      if (left < ul.scrollLeft) ul.scrollLeft = left;
+      else if (right > ul.scrollLeft + ul.clientWidth) ul.scrollLeft = right - ul.clientWidth;
+    }
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+</body>
+</html>
