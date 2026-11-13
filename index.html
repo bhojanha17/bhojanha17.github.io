@@ -65,6 +65,14 @@ a:hover { text-decoration-thickness: 2px; }
 .hero .intro { color: var(--muted); max-width: 34em; margin: 0 0 1.75rem; }
 .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font-weight: 700; }
 
+.headshot {
+  display: block;
+  width: 12rem;
+  height: auto;
+  margin: 0 0 1.75rem;
+  border-radius: 50%;
+}
+
 /* At-a-glance facts */
 .facts { margin: 0; border-top: 2px solid var(--ink); }
 .facts div {
@@ -220,6 +228,7 @@ footer .links { margin-top: 0.5rem; }
 @media (max-width: 520px) {
   .wrap { padding: 0 1rem; }
   .facts div { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.75rem; }
+  .headshot { width: 9rem; }
   .site-nav .home { display: none; }
   .site-nav ul a { padding: 0.4rem 0.55rem; font-size: 0.9rem; }
   dl.skills { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
@@ -255,12 +264,15 @@ footer .links { margin-top: 0.5rem; }
       </ul>
     </div>
 
+    <div>
+    <img class="headshot" src="assets/headshot.jpg" width="600" height="600" alt="Portrait of Harshad Bhojan">
     <dl class="facts">
       <div><dt>Working at</dt><dd>Capital One, Associate Software Engineer</dd></div>
       <div><dt>Studying</dt><dd>M.S. Computer Science, Georgia Tech</dd></div>
       <div><dt>Based in</dt><dd>New York, NY</dd></div>
       <div><dt>Focus</dt><dd>Backend services, distributed systems, applied AI</dd></div>
     </dl>
+    </div>
   </header>
 
   <section id="live" class="sec">
