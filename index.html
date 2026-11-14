@@ -7,34 +7,39 @@
 <meta name="description" content="Harshad Bhojan, software engineer working on backend services and distributed systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
+/* Four-elements theme, colored after a sunset: maroon fading into night plum.
+   Each section takes one element's color through --accent and a glyph through --glyph. */
 :root {
-  --paper: #f2f3ee;
-  --ink: #18202b;
-  --muted: #56606d;
-  --rule: #d3d6cc;
-  --accent: #0e6b6b;
-  --leader: #a86f00;
-  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  color-scheme: dark;
+  --paper: #4a1424;
+  --night: #1a060f;
+  --ink: #fbeee0;
+  --muted: #dcbcac;
+  --rule: rgba(255, 220, 200, 0.16);
+  --water: #8cc4ea;
+  --earth: #a9d18b;
+  --fire: #ffa36e;
+  --air: #f6c56b;
+  --lotus: #f7e3ea;
+  --accent: var(--fire);
+  --display: "Cinzel", Georgia, serif;
   --body: "Atkinson Hyperlegible", system-ui, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #171c23;
-    --ink: #e7e9e3;
-    --muted: #a0a8b3;
-    --rule: #2f3742;
-    --accent: #5cbcb6;
-    --leader: #e3ac45;
-  }
+
+  --g-fire: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 1.5c.8 4.2 6.5 6.4 6.5 12.5a6.5 6.5 0 0 1-13 0c0-3.2 1.8-5.3 3.2-6.4-.2 2.3.8 3.7 2.1 3.9-.4-3.4-.6-6.6 1.2-10z'/></svg>");
+  --g-earth: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1.5 21 8.5 6.5l4.2 6.8 3.1-4.3L22.5 21z'/></svg>");
+  --g-water: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'><path d='M2 7q2.5-3 5 0t5 0 5 0 5 0M2 12.5q2.5-3 5 0t5 0 5 0 5 0M2 18q2.5-3 5 0t5 0 5 0 5 0'/></svg>");
+  --g-air: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'><path d='M2 9h12a3 3 0 1 0-3-3M2 14h16a3 3 0 1 1-3 3M2 19h7'/></svg>");
+  --g-lotus: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3c2.5 3 3 7.5 0 12-3-4.5-2.5-9 0-12zM2.5 8.5c4.2 0 7.3 2.6 9 7C7.3 16 3.6 13.3 2.5 8.5zM21.5 8.5c-4.2 0-7.3 2.6-9 7 4.2.5 7.9-2.2 9-7zM3.5 17.5h17c-1.6 2.2-4.8 3.5-8.5 3.5s-6.9-1.3-8.5-3.5z'/></svg>");
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--paper);
+  overflow-x: clip;
+  background: linear-gradient(var(--paper), var(--night) 3000px) no-repeat, var(--night);
   color: var(--ink);
   font: 400 1.0625rem/1.6 var(--body);
 }
@@ -50,16 +55,17 @@ a:hover { text-decoration-thickness: 2px; }
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 3rem;
   align-items: end;
-  padding: 5.5rem 0 4rem;
+  padding: 3rem 0 3.5rem;
   border-bottom: 1px solid var(--rule);
+  --accent: var(--ink);
 }
 .hero h1 {
-  font: 800 clamp(3rem, 8vw, 5.75rem)/0.92 var(--display);
-  letter-spacing: -0.035em;
+  font: 800 clamp(2.75rem, 7.5vw, 5.25rem)/0.98 var(--display);
+  letter-spacing: 0.01em;
   margin: 0 0 1.5rem;
 }
 .hero .role {
-  font: 500 1.3rem/1.35 var(--display);
+  font: 700 1.25rem/1.4 var(--body);
   margin: 0 0 1rem;
 }
 .hero .intro { color: var(--muted); max-width: 34em; margin: 0 0 1.75rem; }
@@ -67,9 +73,9 @@ a:hover { text-decoration-thickness: 2px; }
 
 .headshot {
   display: block;
-  width: 12rem;
+  width: 14rem;
   height: auto;
-  margin: 0 0 1.75rem;
+  margin: 0 auto 1.75rem;
   border-radius: 50%;
 }
 
@@ -79,7 +85,7 @@ a:hover { text-decoration-thickness: 2px; }
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 1rem;
-  padding: 0.85rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid var(--rule);
 }
 .facts dt { color: var(--muted); }
@@ -89,7 +95,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* ---------- Sticky nav ---------- */
 .site-nav {
   position: sticky; top: 0; z-index: 10;
-  background: var(--paper);
+  background: var(--night);
   border-bottom: 1px solid var(--rule);
 }
 .site-nav .wrap {
@@ -119,6 +125,11 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .site-nav ul a:hover { color: var(--ink); background: var(--rule); }
 .site-nav ul a[aria-current="true"] { color: var(--paper); background: var(--accent); }
+.site-nav a[href="#live"] { --accent: var(--fire); }
+.site-nav a[href="#experience"] { --accent: var(--earth); }
+.site-nav a[href="#projects"] { --accent: var(--water); }
+.site-nav a[href="#skills"] { --accent: var(--air); }
+.site-nav a[href="#education"] { --accent: var(--lotus); }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 section[id] { scroll-margin-top: 3.5rem; }
@@ -131,12 +142,35 @@ section:last-of-type { border-bottom: 0; }
   gap: 2rem;
 }
 h2 {
-  font: 700 1.75rem/1.1 var(--display);
-  letter-spacing: -0.015em;
+  font: 700 1.6rem/1.15 var(--display);
   margin: 0;
   position: sticky; top: 5.5rem;
   align-self: start;
 }
+/* Element glyph above each section heading, and the element's name below it */
+h2::before {
+  content: "";
+  display: block;
+  width: 2rem; height: 2rem;
+  margin-bottom: 0.6rem;
+  background: var(--accent);
+  -webkit-mask: var(--glyph) center / contain no-repeat;
+  mask: var(--glyph) center / contain no-repeat;
+}
+h2::after {
+  content: var(--element);
+  display: block;
+  margin-top: 0.4rem;
+  font: 500 0.8rem/1 var(--display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+#live { --accent: var(--fire); --glyph: var(--g-fire); --element: "Fire"; }
+#experience { --accent: var(--earth); --glyph: var(--g-earth); --element: "Earth"; }
+#projects { --accent: var(--water); --glyph: var(--g-water); --element: "Water"; }
+#skills { --accent: var(--air); --glyph: var(--g-air); --element: "Air"; }
+#education { --accent: var(--lotus); --glyph: var(--g-lotus); --element: "White Lotus"; }
 h3 { font: 700 1.3rem/1.25 var(--display); margin: 0; }
 ul.bullets { margin: 0.75rem 0 0; padding-left: 1.1rem; max-width: 44em; }
 ul.bullets li { margin-bottom: 0.45rem; }
@@ -154,10 +188,9 @@ ul.bullets li::marker { color: var(--muted); }
   content: "";
   position: absolute; left: -7px; top: 0.4rem;
   width: 12px; height: 12px; border-radius: 50%;
-  background: var(--paper);
-  border: 2px solid var(--accent);
+  background: var(--accent);
 }
-.job.current::before { background: var(--accent); }
+.job.current::before { box-shadow: 0 0 0 4px rgba(169, 209, 139, 0.3); }
 .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; align-items: baseline; }
 .when { color: var(--muted); font-size: 0.95rem; white-space: nowrap; }
 .title { margin: 0.15rem 0 0; color: var(--muted); }
@@ -219,7 +252,7 @@ footer .links { margin-top: 0.5rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1fr); padding-top: 3.5rem; gap: 2.5rem; }
+  .hero { grid-template-columns: minmax(0, 1fr); padding-top: 2.5rem; gap: 2rem; }
   .sec { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   h2 { position: static; }
   .projects { grid-template-columns: minmax(0, 1fr); }
@@ -228,7 +261,7 @@ footer .links { margin-top: 0.5rem; }
 @media (max-width: 520px) {
   .wrap { padding: 0 1rem; }
   .facts div { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.75rem; }
-  .headshot { width: 9rem; }
+  .headshot { width: 11rem; }
   .site-nav .home { display: none; }
   .site-nav ul a { padding: 0.4rem 0.55rem; font-size: 0.9rem; }
   dl.skills { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
